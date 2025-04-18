@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Compass | VGU</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="vgu logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="vgu logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #4E1F0F 0%, #4E1F0F 50%, #4E1F0F 100%);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .campus-map {
+            background-image: url('image3.webp');
+            background-size: cover;
+            background-position: center;
+        }
+        .download-btn {
+            transition: all 0.3s ease;
+        }
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #4E1F0F;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<title>Popup</title>
+</head>
+<body>
+    <!-- WhatsApp Floating Icon -->
+<style>
+  #whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+  }
+
+  #whatsapp-icon:hover {
+    transform: scale(1.1);
+  }
+
+  #whatsapp-icon img {
+    width: 32px;
+    height: 32px;
+  }
+</style>
+
+<div id="whatsapp-icon" onclick="redirectToWhatsApp()">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</div>
+
+<script>
+  function redirectToWhatsApp() {
+    const phoneNumber = "918210700949"; // Replace with your WhatsApp number (without +)
+    const message = "Hi, I am interested to know more about the Smart Campus compass at Vivekananda Global University Jaipur.";
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  }
+</script>
+
+
+<body class="font-sans antialiased text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="vgu logo.png" alt="VGU Logo">
+                        <span class="ml-2 text-xl font-bold text-indigo-600">VGU Compass</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#home" class="nav-link text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
+                    <a href="#features" class="nav-link text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Features</a>
+                    <a href="#map" class="nav-link text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Campus Map</a>
+                    <a href="#download" class="nav-link text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Download</a>
+                    <a href="#contact" class="nav-link text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Contact</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#home" class="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="#features" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Features</a>
+                <a href="#map" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Campus Map</a>
+                <a href="#download" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Download</a>
+                <a href="#contact" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-cover bg-center bg-no-repeat min-h-screen text-white" style="background-image: url('image2.webp');">
+        <div class="absolute inset-0 "></div> <!-- Dark overlay -->
+        <div class="relative z-10 max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+              Campus Compass
+            </h1>
+            <p class="mt-6 max-w-lg mx-auto text-xl">
+              Never get lost on campus again with our cutting-edge navigation app designed for Vivekananda Global University.
+            </p>
+            <div class="mt-10 flex justify-center space-x-4">
+              <a href="#download" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50">
+                Download Now
+              </a>
+              <a href="#features" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 bg-opacity-60 hover:bg-opacity-70">
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+    <!-- Features Section -->
+    <section id="features" class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Features</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Everything you need to navigate campus
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Our app combines advanced technology with user-friendly design to make campus navigation effortless.
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Feature 1 -->
+                    <div class="feature-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                                    <i class="fas fa-map-marked-alt text-white text-xl"></i>
+                                </div>
+                                <div class="ml-5">
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900">Interactive Campus Map</h3>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-base text-gray-500">
+                                    Explore our detailed 3D map of all campus buildings including Tech Block, Admin Block, and Academic Block.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="feature-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                                    <i class="fas fa-location-arrow text-white text-xl"></i>
+                                </div>
+                                <div class="ml-5">
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900">Real-time Positioning</h3>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-base text-gray-500">
+                                    GPS and indoor BLE beacon technology helps you locate yourself anywhere on campus, even inside buildings.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="feature-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                                    <i class="fas fa-route text-white text-xl"></i>
+                                </div>
+                                <div class="ml-5">
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900">Voice-guided Navigation</h3>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-base text-gray-500">
+                                    Get turn-by-turn voice directions to your classroom, library, or any other campus location.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="feature-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                                    <i class="fas fa-calendar-alt text-white text-xl"></i>
+                                </div>
+                                <div class="ml-5">
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900">Schedule Integration</h3>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-base text-gray-500">
+                                    Sync with your class schedule and get automatic reminders and directions to your next class.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 5 -->
+                    <div class="feature-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                                    <i class="fas fa-qrcode text-white text-xl"></i>
+                                </div>
+                                <div class="ml-5">
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900">QR Code Navigation</h3>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-base text-gray-500">
+                                    Scan QR codes placed around campus for instant directions to key locations like labs and workshops.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 6 -->
+                    <div class="feature-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                                    <i class="fas fa-bell text-white text-xl"></i>
+                                </div>
+                                <div class="ml-5">
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900">Campus Alerts</h3>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-base text-gray-500">
+                                    Receive real-time notifications about room changes, campus events, and important announcements.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Map Section -->
+    <section id="map" class="py-16 campus-map relative">
+        <div class="absolute inset-0 bg-indigo-900 opacity-75"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+                    <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                        Explore Our Campus
+                    </h2>
+                    <p class="mt-3 text-lg text-indigo-200 sm:mt-5">
+                        Our campus features three main buildings with distinct functions across multiple floors:
+                    </p>
+                    <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-lg p-4">
+                            <h3 class="text-lg font-medium text-white">Tech Block</h3>
+                            <ul class="mt-2 text-indigo-200">
+                                <li>• LG: Workshops</li>
+                                <li>• 2F: Computer Labs</li>
+                                <li>• 4F: Electrical Workshop</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-lg p-4">
+                            <h3 class="text-lg font-medium text-white">Academic Block</h3>
+                            <ul class="mt-2 text-indigo-200">
+                                <li>• 2F: Library</li>
+                                <li>• 3F-5F: Classrooms</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-lg p-4">
+                            <h3 class="text-lg font-medium text-white">Admin Block</h3>
+                            <ul class="mt-2 text-indigo-200">
+                                <li>• Administrative Offices</li>
+                                <li>• Faculty Rooms</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+                    <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md overflow-hidden">
+                        <div class="aspect-w-16 aspect-h-9 w-full">
+                            <img class="w-full h-auto" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3" alt="Campus map screenshot">
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button class="bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-4 shadow-lg transform transition hover:scale-110">
+                                <i class="fas fa-play text-indigo-600 text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   <!-- maping image -->
+   <iframe style="margin-top: 2rem; width: 750px; height: 500px; margin-left: 250px; "
+   
+   src="https://www.google.com/maps/embed?pb=!4v1712997841992!6m8!1m7!1s-4ZqnlvMocb0%2FWauYLXGSYaI%2FAAAAAAAAAow%2FdCFSvaPFDF8vfA5Ri60dRflaVqhmRdrYwCLIBGAYYCw!2m2!1d26.8113487!2d75.8899177!3f75!4f0!5f0.7820865974627469"
+   allowfullscreen
+   loading="lazy"
+   referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+
+    <!-- Download Section -->
+    <section id="download" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Get the App</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Available on all platforms
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Download our lightweight app for Android or iOS and start navigating campus with ease.
+                </p>
+            </div>
+
+            <div class="mt-10 flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-6">
+                <a href="#" class="download-btn w-full sm:w-auto flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                    <i class="fab fa-google-play text-2xl mr-3"></i>
+                    <div class="text-left">
+                        <div class="text-xs">GET IT ON</div>
+                        <div class="text-xl font-bold">Google Play</div>
+                    </div>
+                </a>
+                <a href="#" class="download-btn w-full sm:w-auto flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900 md:py-4 md:text-lg md:px-10">
+                    <i class="fab fa-apple text-2xl mr-3"></i>
+                    <div class="text-left">
+                        <div class="text-xs">Download on the</div>
+                        <div class="text-xl font-bold">App Store</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="pt-6">
+                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                        <div class="-mt-6">
+                            <div>
+                                <span class="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                                    <i class="fas fa-mobile-alt text-white text-xl"></i>
+                                </span>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Lightweight</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Our app is optimized to use minimal storage and battery while providing all essential features.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                        <div class="-mt-6">
+                            <div>
+                                <span class="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                                    <i class="fas fa-wifi text-white text-xl"></i>
+                                </span>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Offline Mode</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Works without internet connection once downloaded. Perfect for areas with poor connectivity.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                        <div class="-mt-6">
+                            <div>
+                                <span class="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                                    <i class="fas fa-sync-alt text-white text-xl"></i>
+                                </span>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Regular Updates</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                We continuously improve the app with new features and updated campus information.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Contact Us</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Stay Connected
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Follow us on social media for the latest updates and campus news.
+                </p>
+            </div>
+
+            <div class="mt-10 flex justify-center space-x-8">
+                <a href="#" class="text-gray-400 hover:text-indigo-600 transition-colors duration-300">
+                    <span class="sr-only">Facebook</span>
+                    <i class="fab fa-facebook text-3xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-indigo-600 transition-colors duration-300">
+                    <span class="sr-only">Instagram</span>
+                    <i class="fab fa-instagram text-3xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-indigo-600 transition-colors duration-300">
+                    <span class="sr-only">Twitter</span>
+                    <i class="fab fa-twitter text-3xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-indigo-600 transition-colors duration-300">
+                    <span class="sr-only">LinkedIn</span>
+                    <i class="fab fa-linkedin text-3xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-indigo-600 transition-colors duration-300">
+                    <span class="sr-only">YouTube</span>
+                    <i class="fab fa-youtube text-3xl"></i>
+                </a>
+            </div>
+
+            <div class="mt-16 bg-white shadow-lg rounded-lg overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-8">
+                        <h3 class="text-lg font-medium text-gray-900">Send us a message</h3>
+                        <form class="mt-6 space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                                <input type="text" id="name" name="name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" id="email" name="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                                <textarea id="message" name="message" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="bg-amber-800 p-8 text-white">
+                        <h3 class="text-lg font-medium text-gray-900">Contact Information</h3>
+                        <div class="mt-6 space-y-4">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-indigo-600"></i>
+                                </div>
+                                <div class="ml-3 text-base text-gray-500">
+                                    <p>Vivekananda Global University</p>
+                                    <p>Jaipur, Rajasthan 303012</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-phone-alt text-indigo-600"></i>
+                                </div>
+                                <div class="ml-3 text-base text-gray-500">
+                                    <p>+91 12345 67890</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-envelope text-indigo-600"></i>
+                                </div>
+                                <div class="ml-3 text-base text-gray-500">
+                                    <p>smartcampus@vgu.ac.in</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="text-sm font-medium text-gray-900">Support Hours</h4>
+                            <div class="mt-2 text-sm text-gray-500">
+                                <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+                                <p>Saturday: 10:00 AM - 2:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #4E1F0F;">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Navigation</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#home" class="text-base text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="#features" class="text-base text-gray-300 hover:text-white">Features</a></li>
+                        <li><a href="#map" class="text-base text-gray-300 hover:text-white">Campus Map</a></li>
+                        <li><a href="#download" class="text-base text-gray-300 hover:text-white">Download</a></li>
+                        <li><a href="gallery.html" class="text-base text-gray-300 hover:text-white">gallery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Resources</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">User Guide</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Terms of Service</a></li>
+                        <li><a href="about.html" class="text-base text-gray-300 hover:text-white">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Campus</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Tech Block</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Admin Block</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Academic Block</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Library</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Subscribe</h3>
+                    <p class="mt-4 text-base text-gray-300">Get the latest updates about campus events and app features.</p>
+                    <form class="mt-4 sm:flex sm:max-w-md">
+                        <label for="email" class="sr-only">Email address</label>
+                        <input type="email" id="email" name="email" required class="appearance-none min-w-0 w-full bg-white border border-transparent rounded-md py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white focus:border-white focus:placeholder-gray-400" placeholder="Enter your email">
+                        <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+                            <button type="submit" class="w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
+                <div class="flex space-x-6 md:order-2">
+                    <a href="#" class="text-gray-400 hover:text-gray-300">
+                        <span class="sr-only">Facebook</span>
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-300">
+                        <span class="sr-only">Instagram</span>
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-300">
+                        <span class="sr-only">Twitter</span>
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-300">
+                        <span class="sr-only">LinkedIn</span>
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
+                    &copy; 2025 Vivekananda Global University. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+</style>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.querySelector('#contact form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
+
